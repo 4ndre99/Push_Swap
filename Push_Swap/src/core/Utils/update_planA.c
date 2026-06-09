@@ -3,35 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_planA.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 14:42:39 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/09 15:48:26 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:18:55 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	update_plan_a(t_input *input)
-{
-	t_stack	*current;
-
-	current = input->a;
-	while (current)
-	{
-		if (sum_ops(a_plan_rr(current))
-			> sum_ops(a_plan_rrr(input, current))
-			&& sum_ops(a_plan_rrr(input, current))
-			> sum_ops(a_plan_altern(input, current)))
-			current->plan = a_plan_altern(input, current);
-		else if (sum_ops(a_plan_rr(current))
-			> sum_ops(a_plan_rrr(input, current)))
-			current->plan = a_plan_rrr(input, current);
-		else
-			current->plan = a_plan_rr(current);
-		current = current->next;
-	}
-}
 
 static t_plan	a_plan_rr(t_stack *stackA)
 {
@@ -109,4 +88,25 @@ static t_plan	a_plan_altern(t_input *input, t_stack *nodeA)
 		plan.ops[RRB] = sizeb - b;
 	}
 	return (plan);
+}
+
+void	update_plan_a(t_input *input)
+{
+	t_stack	*current;
+
+	current = input->a;
+	while (current)
+	{
+		if (sum_ops(a_plan_rr(current))
+			> sum_ops(a_plan_rrr(input, current))
+			&& sum_ops(a_plan_rrr(input, current))
+			> sum_ops(a_plan_altern(input, current)))
+			current->plan = a_plan_altern(input, current);
+		else if (sum_ops(a_plan_rr(current))
+			> sum_ops(a_plan_rrr(input, current)))
+			current->plan = a_plan_rrr(input, current);
+		else
+			current->plan = a_plan_rr(current);
+		current = current->next;
+	}
 }

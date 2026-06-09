@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:06:58 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:47:58 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 17:51:55 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "parsing.h"
 
 static void	check_flags(t_input *input, char **argv)
 {

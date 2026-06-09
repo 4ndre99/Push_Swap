@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:23:44 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:31:58 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:29:12 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_stack	*check_smallest(t_stack *stack)
 	return (pos);
 }
 
-int	sum_ops(t_stack *a)
+int	sum_ops(t_plan plan)
 {
 	int	i;
 	int	j;
@@ -84,7 +84,7 @@ int	sum_ops(t_stack *a)
 	i = 0;
 	j = 0;
 	while (i <= RRR)
-		j += a->ops[i++];
+		j += plan.ops[i++];
 	return (j);
 }
 

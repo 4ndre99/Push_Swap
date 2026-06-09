@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rrotations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:11:32 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/01 16:23:14 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:15:01 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ void	reverse_rotate_stack(t_stack **stack)
 	while (last->next)
 		last = last->next;
 	*stack = last;
-	last->prev->next = NULL;
-	last->prev = NULL;
 	last->next = first;
-	first->prev = last;
 	update_index(*stack);
 }
 

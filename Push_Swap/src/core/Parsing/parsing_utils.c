@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:47:41 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:48:02 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:17:49 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	check_dups(t_input *input)
 {
 	t_stack	*i;
 	t_stack	*j;
+	t_stack *tmp;
+	
 	tmp = input->a;
 	while (i)
 	{

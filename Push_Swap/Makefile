@@ -4,7 +4,7 @@ BONUS = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-INC = -Iinc
+INC = -I./inc
 
 CORE_SRC = \
 src/core/manipulate_stacks.c

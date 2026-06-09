@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushs.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:14:38 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/01 16:21:57 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:12:11 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ void	push_stack(t_stack **src, t_stack **dst)
 		return ;
 	temp = *src;
 	*src = (*src)->next;
-	if (*src)
-		(*src)->prev = NULL;
 	temp->next = *dst;
-	if (*dst)
-		(*dst)->prev = temp;
 	*dst = temp;
 	update_index(*src);
 	update_index(*dst);

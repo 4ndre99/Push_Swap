@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 17:12:14 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/01 16:23:24 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/09 18:15:40 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	swap_stack(t_stack **stack)
 	first = *stack;
 	second = (*stack)->next;
 	first->next = second->next;
-	if (second->next)
-		second->next->prev = first;
-	second->prev = NULL;
 	second->next = first;
-	first->prev = second;
 	*stack = second;
 	update_index(*stack);
 }
