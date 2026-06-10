@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:42:49 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/09 18:17:25 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:03:02 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "push_swap.h"
 
 int		ft_atoi(const char *str);
 int		ft_strcmp(const char *s1, const char *s2);

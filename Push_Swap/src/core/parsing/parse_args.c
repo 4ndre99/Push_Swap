@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:06:58 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 17:51:55 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:21:29 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	parsing(t_input *input, char **argv)
 		i++;
 	while (argv[i])
 	{
-		if(!parse_argument(input, argv[i]));
+		if(!parse_argument(input, argv[i]))
 			return (0);
 		i++;
 	}
-	return (check_dups(input->a));
+	return (check_dups(input));
 }

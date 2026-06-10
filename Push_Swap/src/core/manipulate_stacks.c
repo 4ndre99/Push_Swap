@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manipulate_stacks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 00:41:21 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:17:58 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:13:23 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ void	lst_addback(t_input *input, int value)
 {
 	t_stack	*tmp;
 	t_stack	*node;
-	int		i;
+	t_plan	plan;
 
+	plan = (t_plan){0};
 	node = malloc(sizeof(t_stack));
 	if (!node)
-		return (free_stack(input->a), NULL);
+	{
+		free_stack(input->a);
+		return ;
+	}
 	node->value = value;
 	node->index = -1;
 	node->next = NULL;
 	node->target = NULL;
-	i = 0;
-	while (i <= RRR)
-		node->ops[i++] = 0;
+	node->plan = plan;
 	if (!input->a)
 	{
 		input->a = node;

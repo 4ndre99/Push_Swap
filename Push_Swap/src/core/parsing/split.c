@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:39:30 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:43:09 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:36:40 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	fill(char **split, char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
 	char	**split;
 	int		j;
 
@@ -120,7 +119,6 @@ char	**ft_split(char const *s, char c)
 	split = malloc((subs_count(s, c) + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
-	i = 0;
 	j = fill(split, s, c);
 	if (j >= 0)
 	{

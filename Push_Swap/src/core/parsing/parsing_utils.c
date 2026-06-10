@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:47:41 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 18:17:49 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:32:58 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,8 @@ int	check_dups(t_input *input)
 {
 	t_stack	*i;
 	t_stack	*j;
-	t_stack *tmp;
 	
-	tmp = input->a;
+	i = input->a;
 	while (i)
 	{
 		j = i->next;
@@ -51,9 +50,11 @@ int	check_dups(t_input *input)
 }
 void	free_split(char **arg)
 {
+	int	i;
+
 	if (!arg || !*arg)
 		return ;
-	int	i;
+	i = 0;
 	while (arg[i])
 		i++;
 	while (i >= 0)
@@ -65,7 +66,7 @@ int	parse_argument(t_input *input, char *str)
 	int	i;
 	char	**arg;
 
-	arg = split(arg, ' ');
+	arg = ft_split(str, ' ');
 	if (!arg)
 		return (0);
 	i = 0;
@@ -73,7 +74,7 @@ int	parse_argument(t_input *input, char *str)
 	{
 		if (!valid_num(arg[i]))
 			return (free_split(arg), 0);
-		lst_addback(input->a, ft_atoi(arg[i]));
+		lst_addback(input, ft_atoi(arg[i]));
 		i++;
 	}
 	return (free_split(arg), 1);

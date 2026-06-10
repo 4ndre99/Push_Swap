@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:23:44 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 18:29:12 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:44:06 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,12 @@ void	lowest_to_top(t_input *input)
 	lowest = check_smallest(input->a);
 	if (lowest->index <= lst_size(input->a) / 2)
 	{
-		while (!is_sorted(input))
+		while (!input->disorder)
 			ra(input);
 	}
 	else
 	{
-		while (!is_sorted(input))
+		while (!input->disorder)
 			rra(input);
 	}
 }

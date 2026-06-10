@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 18:04:47 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/09 18:31:27 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/10 15:46:26 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdint.h>
+# include "parsing.h"
 
 typedef enum e_op
 {
@@ -102,8 +103,27 @@ t_stack	*check_smallest(t_stack *stack);
 int		sum_ops(t_plan plan);
 void	lowest_to_top(t_input *input);
 void	lowest_to_top(t_input *input);
+
+//manipulate
 void	lst_addback(t_input *input, int value);
 void	free_stack(t_stack *stack);
 int		lst_size(t_stack *stack);
+
+//sort
+void	pb_cheapest(t_input *input);
+t_stack	*cheapest_node(t_stack *a);
+void	pa_cheapest(t_input *input);
+void	sort_three(t_input *input);
+void	sort_radix(t_input *input);
+void	sort(t_input *input);
+void	sort_simple(t_input *input);
+void	sort_medium(t_input *input);
+void	sort_complex(t_input *input);
+void	sort_adaptive(t_input *input);
+
+//main
+int		check_args(t_input *input, char **argv);
+int		init_stack(t_input *input, char **argv);
+void	init_input(t_input *input);
 
 #endif
