@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   prints.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 13:38:01 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/09 15:50:58 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:35:39 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#include "core.h"
 
 int	printchar(int c)
 {

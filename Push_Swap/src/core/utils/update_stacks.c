@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   update_stacks.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 16:59:30 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:23:13 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:00:17 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	update_index(t_stack *stack)
-{
-	int		index;
-
-	index = 0;
-	while (stack)
-	{
-		stack->index = index++;
-		stack = stack->next;
-	}
-}
 
 void	update_target_a(t_input *input)
 {

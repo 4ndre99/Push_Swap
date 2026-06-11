@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:37:00 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:21:49 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:47:16 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort(t_input *input)
 {
 	int	len;
 
+	update_index(input->a);
 	len = lst_size(input->a);
 	if (len == 2)
 		sa(input);
@@ -68,7 +69,7 @@ void	sort_medium(t_input *input)
 		update_target_a(input);
 		pb_cheapest(input);
 	}
-	if (!is_sorted(input))
+	if (!is_sorted(input->a))
 		sort_three(input);
 	while (lst_size(input->b))
 	{

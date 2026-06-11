@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swaps.c                                            :+:      :+:    :+:   */
+/*   push_or_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:12:14 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 18:15:40 by ade-arau         ###   ########.fr       */
+/*   Created: 2026/06/11 14:21:19 by ade-arau          #+#    #+#             */
+/*   Updated: 2026/06/11 14:22:21 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	swap_stack(t_stack **stack)
-{
-	t_stack	*first;
-	t_stack	*second;
-
-	if (!*stack || !(*stack)->next)
-		return ;
-	first = *stack;
-	second = (*stack)->next;
-	first->next = second->next;
-	second->next = first;
-	*stack = second;
-	update_index(*stack);
-}
 
 void	sa(t_input *input)
 {
@@ -47,4 +32,18 @@ void	ss(t_input *input)
 	swap_stack(&input->b);
 	write(1, "ss\n", 3);
 	input->ops_sum[SS]++;
+}
+
+void	pa(t_input *input)
+{
+	push_stack(&input->b, &input->a);
+	write(1, "pa\n", 3);
+	input->ops_sum[PA]++;
+}
+
+void	pb(t_input *input)
+{
+	push_stack(&input->a, &input->b);
+	write(1, "pb\n", 3);
+	input->ops_sum[PB]++;
 }

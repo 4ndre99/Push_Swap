@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushs.c                                            :+:      :+:    :+:   */
+/*   rrotation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:14:38 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 18:12:11 by ade-arau         ###   ########.fr       */
+/*   Created: 2026/06/11 14:23:02 by ade-arau          #+#    #+#             */
+/*   Updated: 2026/06/11 14:23:34 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_stack(t_stack **src, t_stack **dst)
+void	rra(t_input *input)
 {
-	t_stack	*temp;
-
-	if (!*src)
-		return ;
-	temp = *src;
-	*src = (*src)->next;
-	temp->next = *dst;
-	*dst = temp;
-	update_index(*src);
-	update_index(*dst);
+	reverse_rotate_stack(&input->a);
+	write(1, "rra\n", 4);
+	input->ops_sum[RRA]++;
 }
 
-void	pa(t_input *input)
+void	rrb(t_input *input)
 {
-	push_stack(&input->b, &input->a);
-	write(1, "pa\n", 3);
-	input->ops_sum[PA]++;
+	reverse_rotate_stack(&input->b);
+	write(1, "rrb\n", 4);
+	input->ops_sum[RRB]++;
 }
 
-void	pb(t_input *input)
+void	rrr(t_input *input)
 {
-	push_stack(&input->a, &input->b);
-	write(1, "pb\n", 3);
-	input->ops_sum[PB]++;
+	reverse_rotate_stack(&input->a);
+	reverse_rotate_stack(&input->b);
+	write(1, "rrr\n", 4);
+	input->ops_sum[RRR]++;
 }

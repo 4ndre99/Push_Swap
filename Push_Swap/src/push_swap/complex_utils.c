@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 17:47:34 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:21:41 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:33:14 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void	rank_values(t_input *input)
 		}
 		k++;
 	}
+	free(array);
 }

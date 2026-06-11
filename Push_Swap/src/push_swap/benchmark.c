@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:10:21 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/05/29 13:48:52 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:13:35 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ int	total_ops(t_input *input)
 
 void	write_bench(t_input *input)
 {
-	print("[bench] disorder:	%f\n", (input->disorder) * 100);
+	if (input->disorder == 1)
+		print("[bench] disorder:	100.00%%\n");
+	else
+		print("[bench] disorder:	%f\n", (input->disorder) * 100);
 	print("[bench] strategy:	");
 	write_strat(input->strat);
 	write(1, "  /  ", 5);
@@ -76,6 +79,6 @@ void	valid_run(t_input *input)
 {
 	if (input->bench == 1)
 		write_bench(input);
-	free_stack(input->a);
-	free_stack(input->b);
+	free_stack(&input->a);
+	free_stack(&input->b);
 }

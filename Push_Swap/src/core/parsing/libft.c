@@ -6,11 +6,11 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:42:07 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 18:17:06 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:06:51 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "core.h"
 
 int	ft_atoi(const char *str)
 {

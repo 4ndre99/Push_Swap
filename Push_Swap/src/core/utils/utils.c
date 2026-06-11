@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:23:44 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/10 15:44:06 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:11:21 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	disorder(t_input *input)
 {
 	t_stack	*stack;
 	t_stack	*iterate;
-	double	mistakes;
-	double	total_pairs;
+	float	mistakes;
+	float	total_pairs;
 
 	stack = input->a;
 	mistakes = 0;
@@ -95,12 +95,12 @@ void	lowest_to_top(t_input *input)
 	lowest = check_smallest(input->a);
 	if (lowest->index <= lst_size(input->a) / 2)
 	{
-		while (!input->disorder)
+		while (!is_sorted(input->a))
 			ra(input);
 	}
 	else
 	{
-		while (!input->disorder)
+		while (!is_sorted(input->a))
 			rra(input);
 	}
 }

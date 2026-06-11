@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   stack_to_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 17:59:36 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/09 18:04:15 by ade-arau         ###   ########.fr       */
+/*   Created: 2026/06/11 14:42:28 by ade-arau          #+#    #+#             */
+/*   Updated: 2026/06/11 16:19:31 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdarg.h>
+int	*stack_to_array(t_stack *a)
+{
+	int 	i;
+	int 	*array;
+	t_stack	*b;
 
-int	printchar(int c);
-int	printstr(char *str);
-int	printint(int c);
-int	printfloat(double c);
-int	print(const char *content, ...);
-
-#endif
+	i = 0;
+	b = a;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	array = malloc(i * sizeof(int));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (b)
+	{
+		array[i++] = b->value;
+		b = b->next;
+	}
+	return (array);
+}

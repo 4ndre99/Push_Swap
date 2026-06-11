@@ -3,38 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 22:32:48 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/08 18:23:27 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:05:24 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_args(t_input *input, char **argv)
+void	check_flags(t_input *input, char **argv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (ft_strcmp(argv[i], "--bench") == 0)
 	{
 		input->bench = 1;
 		i++;
 	}
-	if (is_strat(argv[i]))
-		input->strat = is_strat(argv[i++]);
-	return (validate_numbers(argv + i));
-}
-
-int	init_stack(t_input *input, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (ft_strncmp(argv[i], "--", 2) == 0)
-		i++;
-	return (create_stack(input, argv + i));
+	if (ft_strcmp(argv[i], "--simple") == 0)
+		input->strat = SIMPLE;
+	else if (ft_strcmp(argv[i], "--medium") == 0)
+		input->strat = MEDIUM;
+	else if (ft_strcmp(argv[i], "--complex") == 0)
+		input->strat = COMPLEX;
+	else if (ft_strcmp(argv[i], "--adaptive") == 0)
+		input->strat = ADAPTIVE;
 }
 
 void	init_input(t_input *input)
@@ -54,16 +49,13 @@ void	init_input(t_input *input)
 int	main(int argc, char **argv)
 {
 	t_input	input;
-	char	**polished;
 
 	if (argc == 1)
 		return (0);
-	polished = numbers(argv + 1);
 	init_input(&input);
-	if (!check_args(&input, polished))
-		return (write(2, "Error\n", 6), 1);
-	if (!init_stack(&input, polished))
-		return (write(2, "Error\n", 6), 1);
+	if (!parsing(&input.a, argv))
+		return(write(2, "Error\n", 6), 0);
+	check_flags(&input, argv);
 	disorder(&input);
 	if (!input.disorder)
 		return (valid_run(&input), 0);

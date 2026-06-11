@@ -6,11 +6,11 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:39:30 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/10 15:36:40 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:28:53 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "core.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -106,6 +106,7 @@ int	fill(char **split, char const *s, char c)
 			j++;
 		}
 	}
+	split[j] = NULL;
 	return (-1);
 }
 

@@ -6,31 +6,30 @@ SRC_DIR     	:=	src
 OBJ_DIR     	:=	obj
 
 CORE_SRC		:= src/core/manipulate_stacks.c \
-				src/core/operations/swaps.c \
-				src/core/operations/pushs.c \
-				src/core/operations/rotations.c \
-				src/core/operations/rrotations.c \
-				src/core/parsing/parse_args.c \
 				src/core/parsing/libft.c \
 				src/core/parsing/parsing_utils.c \
 				src/core/parsing/split.c \
-				src/core/utils/update_planA.c \
-				src/core/utils/update_planB.c \
-				src/core/utils/update_stacks.c \
-				src/core/utils/utils.c 
+				src/core/utils/operations.c \
+				src/core/print/printf.c \
+				src/core/print/prints.c
 
 PUSH_SWAP_SRC	:= src/push_swap/main.c \
 				src/push_swap/sort.c \
 				src/push_swap/medium_utils.c \
 				src/push_swap/complex_utils.c \
 				src/push_swap/benchmark.c \
-				src/print/printf.c \
-				src/print/prints.c
+				src/push_swap/stack_to_array.c \
+				src/push_swap/ops/push_or_swap.c \
+				src/push_swap/ops/rotation.c \
+				src/push_swap/ops/rrotation.c \
+				src/core/utils/update_planA.c \
+				src/core/utils/update_planB.c \
+				src/core/utils/update_stacks.c \
+				src/core/utils/utils.c
 
 CHECKER_SRC		:= src/checker/main.c \
 				src/checker/get_next_line.c \
-				src/print/printf.c \
-				src/print/prints.c
+				src/checker/valid_op.c
 
 CORE_OBJ = $(CORE_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 PUSH_SWAP_OBJ = $(PUSH_SWAP_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

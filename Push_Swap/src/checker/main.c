@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:55:50 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 15:57:50 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/11 15:44:28 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	apply_reverse_r(char *line, t_list **stack_a, t_list **stack_b)
+static void	apply_reverse_r(char *line, t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_strcmp(line, "rra\n") == 0)
 		reverse_rotate_stack(stack_a);
@@ -25,7 +25,7 @@ static void	apply_reverse_r(char *line, t_list **stack_a, t_list **stack_b)
 	}
 }
 
-static void	apply_operation(char *line, t_list **stack_a, t_list **stack_b)
+static void	apply_operation(char *line, t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_strcmp(line, "sa\n") == 0)
 		swap_stack(stack_a);
@@ -48,7 +48,7 @@ static void	apply_operation(char *line, t_list **stack_a, t_list **stack_b)
 		apply_reverse_r(line, stack_a, stack_b);
 }
 
-void	checker(t_list **stack_a, t_list **stack_b)
+void	checker(t_stack **stack_a, t_stack **stack_b)
 {
 	char	*line;
 
@@ -69,30 +69,17 @@ void	checker(t_list **stack_a, t_list **stack_b)
 		print("KO\n");
 }
 
-static int	is_sorted(t_list *stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
-	char	**copy;
-
-	copy = numbers(argv + 1);
-	if (argc == 2)
-		copy = split(argv[1], ' ');
-	if (!valid_nums(copy))
-		return (write(2, "Error\n", 6), 1);
-	stack_a = init_list(copy);
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	
+	if (argc == 1)
+		return (0);
+	stack_a = NULL;
 	stack_b = NULL;
+	if (!parsing(&stack_a, argv))
+		return(write(2, "Error\n", 6), 0);
 	checker(&stack_a, &stack_b);
 	return (0);
 }

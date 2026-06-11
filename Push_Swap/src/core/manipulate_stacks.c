@@ -6,23 +6,23 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 00:41:21 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/10 15:13:23 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:14:51 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "core.h"
 
-void	lst_addback(t_input *input, int value)
+void	lst_addback(t_stack **a, int value)
 {
-	t_stack	*tmp;
 	t_stack	*node;
+	t_stack *tmp;
 	t_plan	plan;
 
 	plan = (t_plan){0};
 	node = malloc(sizeof(t_stack));
 	if (!node)
 	{
-		free_stack(input->a);
+		free_stack(a);
 		return ;
 	}
 	node->value = value;
@@ -30,25 +30,26 @@ void	lst_addback(t_input *input, int value)
 	node->next = NULL;
 	node->target = NULL;
 	node->plan = plan;
-	if (!input->a)
+	if (!*a)
 	{
-		input->a = node;
+		*a = node;
 		return ;
 	}
-	tmp = input->a;
+
+	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = node;
 }
 
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
 
-	while (stack)
+	while (*stack)
 	{
-		temp = stack;
-		stack = stack->next;
+		temp = *stack;
+		*stack = (*stack)->next;
 		free(temp);
 	}
 }
@@ -64,4 +65,27 @@ int	lst_size(t_stack *stack)
 		stack = stack->next;
 	}
 	return (size);
+}
+
+void	update_index(t_stack *stack)
+{
+	int		index;
+
+	index = 0;
+	while (stack)
+	{
+		stack->index = index++;
+		stack = stack->next;
+	}
+}
+
+int	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }

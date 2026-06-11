@@ -6,11 +6,11 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:47:41 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/10 15:32:58 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:48:56 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "core.h"
 
 int	valid_num(char *str)
 {
@@ -29,41 +29,43 @@ int	valid_num(char *str)
 	return (1);
 }
 
-int	check_dups(t_input *input)
+int	check_dups(t_stack *a)
 {
-	t_stack	*i;
 	t_stack	*j;
-	
-	i = input->a;
-	while (i)
+
+	if (!a)
+		return (0);
+	while (a)
 	{
-		j = i->next;
+		j = a->next;
 		while (j)
 		{
-			if (i->value == j->value)
+			if (a->value == j->value)
 				return (0);
 			j = j->next;
 		}
-		i = i->next;
+		a = a->next;
 	}
 	return (1);
 }
+
 void	free_split(char **arg)
 {
 	int	i;
 
-	if (!arg || !*arg)
+	if (!arg)
 		return ;
 	i = 0;
 	while (arg[i])
 		i++;
 	while (i >= 0)
 		free(arg[i--]);
+	free(arg);
 }
 
-int	parse_argument(t_input *input, char *str)
+int	parse_argument(t_stack **a, char *str)
 {
-	int	i;
+	int		i;
 	char	**arg;
 
 	arg = ft_split(str, ' ');
@@ -74,8 +76,24 @@ int	parse_argument(t_input *input, char *str)
 	{
 		if (!valid_num(arg[i]))
 			return (free_split(arg), 0);
-		lst_addback(input, ft_atoi(arg[i]));
+		lst_addback(a, ft_atoi(arg[i]));
 		i++;
 	}
 	return (free_split(arg), 1);
+}
+
+int	parsing(t_stack **a, char **argv)
+{
+	int	i;
+	
+	i = 1;
+	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
+		i++;
+	while (argv[i])
+	{
+		if(!parse_argument(a, argv[i]))
+			return (0);
+		i++;
+	}
+	return (check_dups(*a));
 }
