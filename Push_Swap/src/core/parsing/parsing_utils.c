@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:47:41 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 16:48:56 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:48:30 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ int	valid_num(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if ((str[i] == '-' || str[i] == '+')
+		&& str[i + 1]
+		&& (str[i + 1] >= '0' || str[i + 1] <= '9'))
 		i++;
 	while (str[i])
 	{
-		
 		if (str[i] < '0' || str[i] > '9')
 			return (0);
 		i++;
@@ -69,13 +70,15 @@ int	parse_argument(t_stack **a, char *str)
 	char	**arg;
 
 	arg = ft_split(str, ' ');
-	if (!arg)
+	if (!arg || !*arg)
 		return (0);
 	i = 0;
 	while (arg[i])
 	{
 		if (!valid_num(arg[i]))
 			return (free_split(arg), 0);
+		if (ft_atoi(arg[i]) == 0 && ft_strlen(arg[i]) > 2)
+			return (0);
 		lst_addback(a, ft_atoi(arg[i]));
 		i++;
 	}
@@ -85,13 +88,13 @@ int	parse_argument(t_stack **a, char *str)
 int	parsing(t_stack **a, char **argv)
 {
 	int	i;
-	
+
 	i = 1;
 	while (argv[i] && ft_strncmp(argv[i], "--", 2) == 0)
 		i++;
 	while (argv[i])
 	{
-		if(!parse_argument(a, argv[i]))
+		if (!parse_argument(a, argv[i]))
 			return (0);
 		i++;
 	}

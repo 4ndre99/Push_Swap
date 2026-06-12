@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation.c                                         :+:      :+:    :+:   */
+/*   twist_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 14:22:32 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/12 18:06:16 by ade-arau         ###   ########.fr       */
+/*   Created: 2026/06/12 13:03:22 by ade-arau          #+#    #+#             */
+/*   Updated: 2026/06/12 13:06:56 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_input *input)
+void	twist_it(t_input *in)
 {
-	rotate_stack(&input->a);
-	write(1, "ra\n", 3);
-	input->ops_sum[RA]++;
-}
+	int	len_a;
+	int	len_b;
 
-void	rb(t_input *input)
-{
-	rotate_stack(&input->b);
-	write(1, "rb\n", 3);
-	input->ops_sum[RB]++;
-}
-
-void	rr(t_input *input)
-{
-	rotate_stack(&input->a);
-	rotate_stack(&input->b);
-	write(1, "rr\n", 3);
-	input->ops_sum[RR]++;
+	len_a = lst_size(in->a);
+	while (len_a > 1)
+	{
+		rra(in);
+		pb(in);
+		len_a--;
+	}
+	len_b = lst_size(in->b);
+	while (len_b--)
+		pa(in);
 }

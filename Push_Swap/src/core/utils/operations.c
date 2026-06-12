@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:24:57 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 15:41:58 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 18:07:02 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	rotate_stack(t_stack **stack)
 	t_stack	*first;
 	t_stack	*last;
 
-	if (!*stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next || lst_size(*stack) == 1)
 		return ;
 	first = *stack;
 	last = *stack;
@@ -48,7 +48,7 @@ void	reverse_rotate_stack(t_stack **stack)
 	t_stack	*prev;
 	t_stack	*last;
 
-	if (!*stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next || lst_size(*stack) == 1)
 		return ;
 	prev = NULL;
 	last = *stack;
@@ -68,7 +68,7 @@ void	swap_stack(t_stack **stack)
 	t_stack	*first;
 	t_stack	*second;
 
-	if (!*stack || !(*stack)->next)
+	if (!*stack || !(*stack)->next || lst_size(*stack) == 1)
 		return ;
 	first = *stack;
 	second = (*stack)->next;

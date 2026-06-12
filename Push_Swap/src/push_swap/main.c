@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 22:32:48 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 16:05:24 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:29:24 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,14 @@ int	main(int argc, char **argv)
 		return (0);
 	init_input(&input);
 	if (!parsing(&input.a, argv))
-		return(write(2, "Error\n", 6), 0);
+	{
+		free_stack(&input.a);
+		free_stack(&input.b);
+		return (write(2, "Error\n", 6), 0);
+	}
 	check_flags(&input, argv);
 	disorder(&input);
-	if (!input.disorder)
+	if (is_sorted(input.a))
 		return (valid_run(&input), 0);
 	sort(&input);
 	return (valid_run((&input)), 0);

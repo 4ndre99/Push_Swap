@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:55:50 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 15:44:28 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:24:30 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,22 @@ void	checker(t_stack **stack_a, t_stack **stack_b)
 		line = get_next_line(0);
 	}
 	if (is_sorted(*stack_a) && !*stack_b)
-		print("OK\n");
+		write(1, "OK\n", 3);
 	else
-		print("KO\n");
+		write(1, "KO\n", 3);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	
+
 	if (argc == 1)
 		return (0);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!parsing(&stack_a, argv))
-		return(write(2, "Error\n", 6), 0);
+		return (write(2, "Error\n", 6), 0);
 	checker(&stack_a, &stack_b);
 	return (0);
 }

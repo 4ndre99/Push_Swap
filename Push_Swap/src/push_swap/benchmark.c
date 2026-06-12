@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 12:10:21 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 16:13:35 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 19:23:01 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	write_bench(t_input *input)
 		print("[bench] disorder:	%f\n", (input->disorder) * 100);
 	print("[bench] strategy:	");
 	write_strat(input->strat);
-	write(1, "  /  ", 5);
+	write(2, "  /  ", 5);
 	write_form(input);
 	print("[bench] total_ops:	%d\n", total_ops(input));
 	print("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
@@ -78,7 +78,7 @@ void	write_bench(t_input *input)
 void	valid_run(t_input *input)
 {
 	if (input->bench == 1)
-		write_bench(input);
+		write_bench(input);	
 	free_stack(&input->a);
 	free_stack(&input->b);
 }

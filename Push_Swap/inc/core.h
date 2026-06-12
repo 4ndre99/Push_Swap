@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:42:49 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 15:44:50 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:41:32 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,25 @@ int		check_dups(t_stack *stack);
 void	free_split(char **arg);
 int		parse_argument(t_stack **stack, char *str);
 int		is_sorted(t_stack *stack);
-
-// split
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *str);
 size_t	subs_count(char const *s, char c);
 int		fill(char **split, char const *s, char c);
 char	**ft_split(char const *s, char c);
-
-//OPS
 void	swap_stack(t_stack **stack);
 void	push_stack(t_stack **src, t_stack **dst);
 void	rotate_stack(t_stack **stack);
 void	reverse_rotate_stack(t_stack **stack);
 void	update_index(t_stack *stack);
-
-//PRINT
 int		printchar(int c);
 int		printstr(char *str);
 int		printint(int c);
 int		printfloat(double c);
 int		print(const char *content, ...);
-
 int		parsing(t_stack **stack, char **argv);
 void	lst_addback(t_stack **stack, int value);
 void	free_stack(t_stack **stack);
 int		lst_size(t_stack *stack);
-
+int		ft_strlen(char *str);
 
 #endif

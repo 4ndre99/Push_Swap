@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 13:38:01 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 14:35:39 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:14:30 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	printchar(int c)
 {
-	write(1, &c, 1);
+	write(2, &c, 1);
 	return (1);
 }
 
@@ -25,12 +25,12 @@ int	printstr(char *str)
 	i = 0;
 	if (!str)
 	{
-		write(1, "(null)", 6);
+		write(2, "(null)", 6);
 		return (6);
 	}
 	while (str[i])
 	{
-		write(1, &str[i], 1);
+		write(2, &str[i], 1);
 		i++;
 	}
 	return (i);

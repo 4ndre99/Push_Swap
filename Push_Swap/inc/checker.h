@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 17:36:52 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 14:58:30 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:31:49 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 char	*get_next_line(int fd);
 void	checker(t_stack **stack_a, t_stack **stack_b);
 int		valid_op(char *str);
+int		has_nl(char *str);
 
 #endif

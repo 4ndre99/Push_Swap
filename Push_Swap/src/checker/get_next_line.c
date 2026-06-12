@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcooli <marcooli@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/07 16:20:53 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/09 16:03:38 by marcooli         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:10:41 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*joinbuffers(int fd, char *str)
 {
 	char	*buf;
 	ssize_t	br;
-	int		i;
+
 	br = 1;
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
@@ -58,10 +58,7 @@ static char	*joinbuffers(int fd, char *str)
 		str = ft_join(str, buf);
 		if (!str)
 			return (free(buf), NULL);
-		i = 0;
-		while (buf[i] != '\n')
-			i++;
-		if (buf[i] == '\n')
+		if (has_nl(buf))
 			break ;
 	}
 	return (free(buf), str);

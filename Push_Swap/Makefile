@@ -14,7 +14,9 @@ CORE_SRC		:= src/core/manipulate_stacks.c \
 				src/core/print/prints.c
 
 PUSH_SWAP_SRC	:= src/push_swap/main.c \
+				src/push_swap/twist_it.c \
 				src/push_swap/sort.c \
+				src/push_swap/simple_utils.c \
 				src/push_swap/medium_utils.c \
 				src/push_swap/complex_utils.c \
 				src/push_swap/benchmark.c \
@@ -53,6 +55,6 @@ clean:
 	rm -f $(CORE_OBJ) $(PUSH_SWAP_OBJ) $(CHECKER_OBJ)
 
 fclean: clean
-	rm -f $(NAME) $(BONUS)
+	rm -rf $(NAME) $(BONUS) $(OBJ_DIR)
 
 re: fclean all

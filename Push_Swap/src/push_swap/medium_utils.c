@@ -5,92 +5,109 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/27 17:32:36 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 16:14:31 by ade-arau         ###   ########.fr       */
+/*   Created: 2026/06/12 15:50:27 by ade-arau          #+#    #+#             */
+/*   Updated: 2026/06/12 19:21:44 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pb_cheapest(t_input *input)
+static int	compare(int nb, int i)
 {
-	t_stack	*node;
-	int		i;
-
-	update_plan_a(input);
-	node = cheapest_node(input->a);
-	i = node->plan.ops[RA];
-	while (i--)
-		ra(input);
-	i = node->plan.ops[RB];
-	while (i--)
-		rb(input);
-	i = node->plan.ops[RRA];
-	while (i--)
-		rra(input);
-	i = node->plan.ops[RRB];
-	while (i--)
-		rrb(input);
-	i = node->plan.ops[RR];
-	while (i--)
-		rr(input);
-	i = node->plan.ops[RRR];
-	while (i--)
-		rrr(input);
-	pb(input);
+	if ((i * i) == nb)
+		return (i);
+	if ((i * i) > nb)
+		return (i);
+	return (compare(nb, i + 1));
 }
 
-t_stack	*cheapest_node(t_stack *a)
+int	ft_sqrt(int nb)
 {
-	t_stack	*cheapest;
+	if (nb < 1)
+		return (0);
+	return (compare(nb, 1));
+}
 
-	cheapest = a;
+static int	closest_to_top(t_stack *a, int len, int cap)
+{
+	t_stack	*closest;
+	int		ops;
+	int		ops_prev;
+
+	closest = NULL;
+	ops_prev = INT_MAX;
 	while (a)
 	{
-		if (sum_ops(cheapest->plan) > sum_ops(a->plan))
-			cheapest = a;
+		if (a->index <= len / 2)
+			ops = a->index;
+		else
+			ops = len - a->index;
+		if (a->value < cap && ops < ops_prev)
+		{
+			closest = a;
+			ops_prev = ops;
+		}
 		a = a->next;
 	}
-	return (cheapest);
+	if (closest->index <= len / 2)
+		return (0);
+	else
+		return (1);
+}
+	
+void	sort_chunk(t_input *in, int len, int cs)
+{
+	int chunks;
+	int i;
+	int	j;
+
+	i = 0;
+	chunks = len / cs;
+	while (++i <= chunks)
+	{
+		j = -1;
+		while (++j < cs)
+		{
+			while (in->a->value >= i * cs)
+			{
+				if (closest_to_top(in->a, len, i * cs))
+					rra(in);
+				else
+					ra(in);
+			}
+			pb(in);
+		}
+	}
+	while (in->a)
+		pb(in);
 }
 
-void	pa_cheapest(t_input *input)
+void	biggest_to_A(t_input *in, int cs)
 {
-	t_stack	*node;
+	t_stack *b;
+	int		max;
+	int		max_index;
 	int		i;
 
-	update_plan_b(input);
-	node = cheapest_node(input->b);
-	i = node->plan.ops[RA];
+	b = in->b;
+	max_index = -1;
+	max = -1;
+	i = -1;
+	while (b && ++i <= cs)
+	{
+		if (b->value > max)
+		{
+			max_index = b->index;
+			max = b->value;
+		}
+		b = b->next;
+	}
+	i = -1;
+	if (max_index == 1)
+		sb(in);
+	while (++i < max_index && max_index > 1)
+		rb(in);
+	pa(in);
 	while (i--)
-		ra(input);
-	i = node->plan.ops[RB];
-	while (i--)
-		rb(input);
-	i = node->plan.ops[RRA];
-	while (i--)
-		rra(input);
-	i = node->plan.ops[RRB];
-	while (i--)
-		rrb(input);
-	i = node->plan.ops[RR];
-	while (i--)
-		rr(input);
-	i = node->plan.ops[RRR];
-	while (i--)
-		rrr(input);
-	pa(input);
-}
-
-void	sort_three(t_input *input)
-{
-	int	pos;
-
-	pos = check_greatest(input->a)->index;
-	if (pos == 0)
-		ra(input);
-	else if (pos == 1)
-		rra(input);
-	if (input->a->value > input->a->next->value)
-		sa(input);
+		rrb(in);
 }

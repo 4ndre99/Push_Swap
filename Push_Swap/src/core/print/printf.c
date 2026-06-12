@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 19:20:25 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 14:35:35 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:14:17 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	printfloat(double c)
 
 	res = c * 100;
 	a = (res / 1000) + 48;
-	write(1, &a, 1);
+	write(2, &a, 1);
 	a = (res / 100) % 10 + 48;
-	write(1, &a, 1);
-	write(1, ".", 1);
+	write(2, &a, 1);
+	write(2, ".", 1);
 	a = ((res / 10) % 10) + 48;
-	write(1, &a, 1);
+	write(2, &a, 1);
 	a = res % 10 + 48;
-	write(1, &a, 1);
-	write(1, "%", 1);
+	write(2, &a, 1);
+	write(2, "%", 1);
 	return (6);
 }
 

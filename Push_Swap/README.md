@@ -142,22 +142,17 @@ This mode is intended for analyzing operation counts and comparing strategy perf
 ```
 Output:
 ```bash
+pb
+sa
+rrr
+pa
 ra
 ra
-pb
-rra
-pb
-ra
-pb
-pa
-pa
-pa
 [bench] disorder:	50.00%
 [bench] strategy:	Simple  /  O(n^2)
-[bench] total_ops:	10
-[bench] sa:  0  sb:  0  ss:  0  pa:  3  pb:  3
-[bench] ra:  3  rb:  0  rr:  0  rra:  1 rrb:  0  rrr:  0
-
+[bench] total_ops:	6
+[bench] sa:  1  sb:  0  ss:  0  pa:  1  pb:  1
+[bench] ra:  2  rb:  0  rr:  0  rra:  0 rrb:  0  rrr:  1
 ```
 ### Bonus Checker
 

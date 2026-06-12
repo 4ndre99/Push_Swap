@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:42:28 by ade-arau          #+#    #+#             */
-/*   Updated: 2026/06/11 16:19:31 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:33:16 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	*stack_to_array(t_stack *a)
 {
-	int 	i;
-	int 	*array;
+	int		i;
+	int		*array;
 	t_stack	*b;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 20:37:00 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 15:47:16 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 18:58:57 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	sort(t_input *input)
 		sa(input);
 	else if (len == 3)
 		sort_three(input);
+	else if (input->disorder == 1)
+		twist_it(input);
 	else if (input->strat == SIMPLE)
+		sort_simple(input);
+	else if (len <= 50)
 		sort_simple(input);
 	else if (input->strat == MEDIUM)
 		sort_medium(input);
@@ -33,33 +37,6 @@ void	sort(t_input *input)
 }
 
 void	sort_simple(t_input *input)
-{
-	int	size;
-	int	index;
-
-	size = lst_size(input->a);
-	while (size > 1)
-	{
-		index = (check_smallest(input->a))->index;
-		if (index <= size / 2 && index > 0)
-		{
-			while (index--)
-				ra(input);
-		}
-		else if (index > size / 2)
-		{
-			index = size - index;
-			while (index--)
-				rra(input);
-		}
-		pb(input);
-		size--;
-	}
-	while (input->b)
-		pa(input);
-}
-
-void	sort_medium(t_input *input)
 {
 	if (lst_size(input->a) > 4)
 		pb(input);
@@ -77,6 +54,20 @@ void	sort_medium(t_input *input)
 		pa_cheapest(input);
 	}
 	lowest_to_top(input);
+}
+
+void	sort_medium(t_input *input)
+{
+	int	len;
+	int	cs;
+	int	i;
+	len = lst_size(input->a);
+	cs = ft_sqrt(len);
+	rank_values(input);
+	sort_chunk(input, len, cs);
+	i = lst_size(input->b);
+	while (i--)
+		biggest_to_A(input, cs);
 }
 
 void	sort_complex(t_input *input)

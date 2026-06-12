@@ -6,7 +6,7 @@
 /*   By: ade-arau <ade-arau@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 00:41:21 by marcooli          #+#    #+#             */
-/*   Updated: 2026/06/11 16:14:51 by ade-arau         ###   ########.fr       */
+/*   Updated: 2026/06/12 12:32:20 by ade-arau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	lst_addback(t_stack **a, int value)
 {
 	t_stack	*node;
-	t_stack *tmp;
+	t_stack	*tmp;
 	t_plan	plan;
 
 	plan = (t_plan){0};
@@ -35,7 +35,6 @@ void	lst_addback(t_stack **a, int value)
 		*a = node;
 		return ;
 	}
-
 	tmp = *a;
 	while (tmp->next)
 		tmp = tmp->next;
